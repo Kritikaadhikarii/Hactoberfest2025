@@ -1,0 +1,177 @@
+:root{
+	--bg-1: #0f1724; /* dark navy */
+	--bg-2: #0b2545; /* deep blue */
+	--card: #0f1729;
+	--accent: #5eead4; /* teal */
+	--accent-2: #60a5fa; /* blue */
+	--muted: rgba(255,255,255,0.08);
+	--glass: rgba(255,255,255,0.03);
+	--text: #e6eef8;
+}
+
+*{box-sizing: border-box}
+html,body{
+	height:100%;
+}
+body{
+	margin:0;
+	font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: radial-gradient(1000px 600px at 10% 10%, rgba(96,165,250,0.06), transparent),
+				linear-gradient(180deg,var(--bg-1), var(--bg-2));
+	color:var(--text);
+	-webkit-font-smoothing:antialiased;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	padding:48px 16px;
+}
+
+.container{
+	width:360px;
+	max-width:96vw;
+	background-color: var(--card);
+	background-image: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+	border-radius:18px;
+	padding:20px 18px 28px;
+	box-shadow: 0 12px 36px rgba(2,6,23,0.75), inset 0 1px 0 rgba(255,255,255,0.02);
+	border:1px solid rgba(96,165,250,0.06);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+.heading{
+	display:flex;
+	align-items:center;
+	gap:14px;
+	justify-content:flex-start;
+	margin-bottom:14px;
+}
+
+.heading h1{
+	margin:0;
+	font-weight:700;
+	font-size:28px;
+	letter-spacing:0.6px;
+	color:var(--text);
+}
+
+.pyramid-loader{
+	width:48px;
+	height:48px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.pyramid-loader .wrapper{
+	position:relative;
+	width:36px;
+	height:28px;
+	transform-style:preserve-3d;
+	animation: spin 2.2s linear infinite;
+}
+.pyramid-loader .wrapper span.side{
+	position:absolute;
+	width:0;
+	height:0;
+	border-left:18px solid transparent;
+	border-right:18px solid transparent;
+	border-bottom:14px solid var(--accent);
+	opacity:0.95;
+}
+.pyramid-loader .wrapper .side1{ transform: rotateY(0deg) translateZ(6px); }
+.pyramid-loader .wrapper .side2{ transform: rotateY(90deg) translateZ(6px); border-bottom-color: var(--accent-2); }
+.pyramid-loader .wrapper .side3{ transform: rotateY(180deg) translateZ(6px); filter:brightness(0.9); }
+.pyramid-loader .wrapper .side4{ transform: rotateY(270deg) translateZ(6px); filter:brightness(0.8); }
+.pyramid-loader .wrapper .shadow{
+	position:absolute; left:0; right:0; bottom:-8px; height:6px; border-radius:50%;
+	background: radial-gradient(closest-side, rgba(0,0,0,0.35), transparent);
+}
+@keyframes spin{
+	0%{ transform: rotateX(10deg) rotateY(0deg); }
+	50%{ transform: rotateX(12deg) rotateY(180deg); }
+	100%{ transform: rotateX(10deg) rotateY(360deg); }
+}
+
+.calculator{
+	margin-top:6px;
+}
+.calculator form{
+	display:grid;
+	gap:10px;
+}
+
+.display{
+	background:var(--glass);
+	border-radius:12px;
+	padding:10px;
+	border:1px solid var(--muted);
+}
+.display input[type="text"]{
+	width:100%;
+	border:0;
+	outline:none;
+	background:transparent;
+	color:var(--text);
+	font-size:28px;
+	font-weight:600;
+	text-align:right;
+	padding:8px 6px;
+}
+
+.calculator form > div{
+	display:flex;
+	gap:10px;
+}
+
+input[type="button"]{
+	-webkit-appearance:none;
+	appearance:none;
+	flex:1 1 0;
+	height:52px;
+	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	border-radius:10px;
+	border:1px solid rgba(255,255,255,0.04);
+	color:var(--text);
+	font-size:18px;
+	font-weight:600;
+	cursor:pointer;
+	box-shadow: 0 4px 10px rgba(2,6,23,0.45), inset 0 -6px 20px rgba(255,255,255,0.01);
+	transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+input[type="button"]:active{ transform: translateY(1px) scale(.998); }
+input[type="button"]:hover{ box-shadow: 0 8px 18px rgba(2,6,23,0.55); }
+
+.SpecialOperations{
+	background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+	color: #ffdcdc;
+}
+
+.operator{
+	background: linear-gradient(180deg, rgba(96,234,213,0.12), rgba(96,165,250,0.06));
+	border:1px solid rgba(96,165,250,0.14);
+	color: #04263b;
+}
+
+.operator, .SpecialOperations{ font-weight:700 }
+
+.calculator form > div:last-child input[type="button"]{
+	height:56px;
+}
+
+input[type="button"][value="0"]{ flex:2 1 0; }
+
+.footer{
+	text-align:center;
+	margin-top:12px;
+	font-size:12px;
+	color: rgba(230,238,248,0.7);
+}
+
+@media (max-width:420px){
+	.container{ padding:16px; }
+	.heading h1{ font-size:22px }
+	input[type="button"]{ height:48px; font-size:17px }
+	.display input[type="text"]{ font-size:24px }
+}
+
+input[type="button"]:focus{ outline:3px solid rgba(96,165,250,0.12); outline-offset:2px }
