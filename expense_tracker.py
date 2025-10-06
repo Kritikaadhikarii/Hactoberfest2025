@@ -73,4 +73,5 @@ def menu():
             print("Invalid option, try again.")
 
 if __name__ == "__main__":
+    # starts the flow from here!
     menu()
