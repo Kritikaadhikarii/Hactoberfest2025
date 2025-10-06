@@ -1,0 +1,140 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #222;
+  color: #eee;
+}
+
+body.dark input {
+  color: #858585;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+#toggle-theme {
+  margin-top: 10px;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+#sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  grid-template-rows: repeat(9, 40px);
+  gap: 2px;
+}
+
+#sudoku-board input {
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+
+.prefilled {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+body.dark .prefilled {
+  background-color: #444;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.controls button {
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+.stats {
+  margin-top: 15px;
+  text-align: left;
+}
+
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .game-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #sudoku-board {
+    grid-template-columns: repeat(9, 32px);
+    grid-template-rows: repeat(9, 32px);
+  }
+
+  #sudoku-board input {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .controls {
+    align-items: center;
+    width: 100%;
+  }
+
+  .controls button {
+    width: 90%;
+    margin: 5px 0;
+  }
+
+  .stats {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  #sudoku-board {
+    grid-template-columns: repeat(9, 26px);
+    grid-template-rows: repeat(9, 26px);
+  }
+
+  #sudoku-board input {
+    width: 24px;
+    height: 24px;
+    font-size: 0.9rem;
+  }
+
+  .controls button {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+}
