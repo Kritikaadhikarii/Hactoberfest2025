@@ -9,6 +9,7 @@ A beginner-friendly weather application built using **HTML**, **CSS**, and **Jav
 
 - 🔍 Search weather by city name  
 - 🌡️ Display temperature in Celsius  
+- 🌡️ Display temperature in Celsius or Fahrenheit (toggle available)  
 - 💧 Show humidity and wind speed  
 - 🌤️ Dynamic weather icons based on conditions  
 - ⚠️ Error message for invalid city names  
