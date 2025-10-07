@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aesthetic Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Background gradient for page */
+    body {
+      background: linear-gradient(135deg, #ffb5a7, #fcd5ce, #fae1dd);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Calculator container styling */
+    .calculator {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(255, 0, 0, 0.15);
+      width: 340px;
+      padding: 30px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Display box */
+    .display {
+      font-family: "Orbitron", sans-serif;
+      background: linear-gradient(135deg, #fff, #ffe5e0);
+      color: #333;
+      border-radius: 15px;
+      box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: right;
+      padding: 20px;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+
+    /* Gradient text heading */
+    h1 {
+      background: linear-gradient(to right, #f28482, #f6bd60);
+      background-clip: text; /* ✅ Standard version */
+      -webkit-background-clip: text; /* ✅ For Chrome, Safari */
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Button glow animation */
+    .btn-glow {
+      transition: all 0.2s ease;
+    }
+
+    .btn-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(242, 132, 130, 0.4);
+    }
+
+    .btn-glow:active {
+      transform: scale(0.97);
+      box-shadow: 0 0 10px rgba(242, 132, 130, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculator">
+    <h1 class="text-center text-3xl font-semibold mb-5">Simple Calculator</h1>
+
+    <input id="display" type="text" readonly class="display" />
+
+    <div class="grid grid-cols-4 gap-3 mt-6">
+      <!-- Row 1 -->
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">7</button>
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">8</button>
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">9</button>
+      <button class="btn-glow bg-gradient-to-br from-[#f28482] to-[#e76f51] text-white text-xl font-medium py-3 rounded-xl">/</button>
+
+      <!-- Row 2 -->
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">4</button>
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">5</button>
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">6</button>
+      <button class="btn-glow bg-gradient-to-br from-[#f28482] to-[#e76f51] text-white text-xl font-medium py-3 rounded-xl">*</button>
+
+      <!-- Row 3 -->
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">1</button>
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">2</button>
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">3</button>
+      <button class="btn-glow bg-gradient-to-br from-[#f28482] to-[#e76f51] text-white text-xl font-medium py-3 rounded-xl">-</button>
+
+      <!-- Row 4 -->
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">0</button>
+      <button class="btn-glow bg-gradient-to-br from-[#ffb5a7] to-[#fcd5ce] text-gray-800 text-xl font-medium py-3 rounded-xl">.</button>
+      <button id="clear" class="btn-glow bg-gradient-to-br from-[#ff6b6b] to-[#f06595] text-white text-xl font-medium py-3 rounded-xl">C</button>
+      <button class="btn-glow bg-gradient-to-br from-[#f28482] to-[#e76f51] text-white text-xl font-medium py-3 rounded-xl">+</button>
+
+      <!-- Equals button -->
+      <button id="equals" class="col-span-4 btn-glow bg-gradient-to-br from-[#84a59d] to-[#bde0fe] text-white text-xl font-medium py-4 rounded-xl mt-3">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById("display");
+    const buttons = document.querySelectorAll("button");
+    const clear = document.getElementById("clear");
+    const equals = document.getElementById("equals");
+
+    // Handle button clicks
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.textContent !== "=" && btn.textContent !== "C") {
+          display.value += btn.textContent;
+        }
+      });
+    });
+
+    // Clear display
+    clear.addEventListener("click", () => display.value = "");
+
+    // Evaluate expression
+    equals.addEventListener("click", () => {
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = "Error";
+      }
+    });
+  </script>
+</body>
+</html>
