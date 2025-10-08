@@ -5,7 +5,7 @@ function validatePassword() {
     var lowerCase = /[a-z]/.test(password);
     var upperCase = /[A-Z]/.test(password);
     var numeric = /[0-9]/.test(password);
-    var specialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    var specialChar = /[!@#$%^&*(),.?"'\:{}|<>]/.test(password);
     var minLength = password.length >= 8;
 
       // Update checklist dynamically
