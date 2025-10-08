@@ -30,6 +30,13 @@ function validatePassword() {
         message.innerHTML = 'Strong password!';
     } else {
         message.style.color = '#ffeb3b';
-        message.innerHTML = '⚠️ Keep typing to meet all requirements.';
+        let errors = [];
+        if (!lowerCase) errors.push("at least one lowercase letter");
+        if (!upperCase) errors.push("at least one uppercase letter");
+        if (!numeric) errors.push("at least one number");
+        if (!specialChar) errors.push("at least one special character");
+        if (!minLength) errors.push("minimum 8 characters");
+
+        message.innerHTML = "⚠️ Password must contain: " + errors.join(", ");
     }
 }
