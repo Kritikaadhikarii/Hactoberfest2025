@@ -1,68 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Digital Clock</title>
   <style>
-    /* Center the clock on the page with a nice design */
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh; /* full viewport height */
-      background: #111; /* dark background */
-      color: #00ffcc; /* neon green text */
-      font-family: monospace, Arial, sans-serif;
-      font-size: 3rem;
+    :root{
+      --bg:#0b0b0d;
+      --fg:#eaf8f6;
+      --accent:#00ffcc;
+      --muted:#9adfd0;
+      --ring: 0 0 20px rgba(0,255,204,.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f7fbfb;
+        --fg:#0e1111;
+        --accent:#0aa890;
+        --muted:#3b6f66;
+        --ring: 0 0 16px rgba(10,168,144,.25);
+      }
+    }
+    [data-theme="light"]{
+      --bg:#f7fbfb;
+      --fg:#0e1111;
+      --accent:#0aa890;
+      --muted:#3b6f66;
+      --ring: 0 0 16px rgba(10,168,144,.25);
+    }
+    [data-theme="dark"]{
+      --bg:#0b0b0d;
+      --fg:#eaf8f6;
+      --accent:#00ffcc;
+      --muted:#9adfd0;
+      --ring: 0 0 20px rgba(0,255,204,.35);
     }
 
-    /* Style the clock container */
-    #clock {
-      padding: 20px;
-      border: 2px solid #00ffcc;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00ffcc;
+    * { box-sizing: border-box }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background:var(--bg);
+      color:var(--fg);
+    }
+
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+
+    .card{
+      width:min(680px, 92vw);
+      border:2px solid var(--accent);
+      border-radius:16px;
+      padding:28px 24px;
+      box-shadow: var(--ring);
+      text-align:center;
+      outline:none;
+    }
+
+    .time{
+      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      line-height:1.1;
+      letter-spacing: .02em;
+      text-shadow: 0 0 8px rgba(0,0,0,.15);
+    }
+
+    .date{
+      margin-top:6px;
+      font-size: clamp(1rem, 3.2vw, 1.25rem);
+      color: var(--muted);
+      letter-spacing:.03em;
+    }
+
+    .controls{
+      margin-top:22px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:1.5px solid var(--accent);
+      background:transparent;
+      color:var(--fg);
+      padding:10px 14px;
+      border-radius:10px;
+      font-size:0.95rem;
+      cursor:pointer;
+      transition: transform .06s ease, background .2s ease;
+    }
+    .btn:focus-visible{ outline:2px dotted var(--accent); outline-offset:3px }
+    .btn[aria-pressed="true"]{ background: rgba(0,0,0,.08) }
+    [data-theme="light"] .btn[aria-pressed="true"]{ background: rgba(0,0,0,.06) }
+    .btn:hover{ transform: translateY(-1px) }
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
     }
   </style>
 </head>
 <body>
-   <!-- The clock will appear inside this div -->
-  <div id="clock"></div>
+  <div class="wrap" id="app">
+    <section class="card" role="group" aria-label="Digital clock">
+      <div id="clock" class="time" aria-live="polite" aria-atomic="true">--:--:--</div>
+      <div id="date" class="date">Loading…</div>
 
+      <div class="controls">
+        <button id="formatBtn" class="btn" type="button" aria-pressed="false" title="Toggle 12/24 hour">
+          24-hour: Off
+        </button>
+        <button id="themeBtn" class="btn" type="button" aria-pressed="false" title="Toggle light/dark theme">
+          Theme: Auto
+        </button>
+      </div>
+    </section>
+  </div>
 
   <script>
-    // Function to update the clock every second
-    function updateClock() {
-      const now = new Date(); // get current date and time
+    (function(){
+      const elTime = document.getElementById('clock');
+      const elDate = document.getElementById('date');
+      const btnFormat = document.getElementById('formatBtn');
+      const btnTheme = document.getElementById('themeBtn');
+      const root = document.documentElement;
 
-      // Get hours, minutes, and seconds
-      let hours = now.getHours();
-      let minutes = now.getMinutes();
-      let seconds = now.getSeconds();
+      // state
+      let use24h = JSON.parse(localStorage.getItem('clock.use24h') || 'false');
+      let themePref = localStorage.getItem('clock.theme') || 'auto'; // 'auto' | 'light' | 'dark'
+      applyTheme(themePref);
+      updateFormatButton();
 
-      // Determine AM or PM
-      const ampm = hours >= 12 ? 'PM' : 'AM';
+      // align the first tick to the next exact second
+      function startTicker(){
+        const now = new Date();
+        const msToNextSecond = 1000 - now.getMilliseconds();
+        setTimeout(() => {
+          tick();
+          setInterval(tick, 1000);
+        }, msToNextSecond);
+      }
 
-      // Convert 24-hour format to 12-hour format
-      hours = hours % 12 || 12; // if hours = 0, set to 12
+      function tick(){
+        const now = new Date();
+        const time = now.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: !use24h
+        });
+        const date = now.toLocaleDateString([], {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        elTime.textContent = time;
+        elDate.textContent = date;
+      }
 
-      // Add leading zeros to minutes and seconds if needed
-      minutes = minutes < 10 ? '0' + minutes : minutes;
-      seconds = seconds < 10 ? '0' + seconds : seconds;
+      // controls
+      btnFormat.addEventListener('click', () => {
+        use24h = !use24h;
+        localStorage.setItem('clock.use24h', JSON.stringify(use24h));
+        updateFormatButton();
+        tick();
+      });
 
-      // Format the time string
-      const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+      function updateFormatButton(){
+        btnFormat.setAttribute('aria-pressed', String(use24h));
+        btnFormat.textContent = `24-hour: ${use24h ? 'On' : 'Off'}`;
+      }
 
-      // Display the time in the clock div
-      document.getElementById('clock').textContent = timeString;
-    }
+      btnTheme.addEventListener('click', () => {
+        // rotate auto -> light -> dark -> auto
+        themePref = themePref === 'auto' ? 'light' : themePref === 'light' ? 'dark' : 'auto';
+        localStorage.setItem('clock.theme', themePref);
+        applyTheme(themePref);
+      });
 
-    // Call updateClock every 1000 milliseconds (1 second)
-    setInterval(updateClock, 1000);
+      function applyTheme(pref){
+        root.removeAttribute('data-theme');
+        let label = 'Auto';
+        if (pref === 'light'){ root.setAttribute('data-theme','light'); label = 'Light'; }
+        if (pref === 'dark'){ root.setAttribute('data-theme','dark'); label = 'Dark'; }
+        btnTheme.setAttribute('aria-pressed', String(pref !== 'auto'));
+        btnTheme.textContent = `Theme: ${label}`;
+      }
 
-    // Call it once immediately to show the clock right away
-    updateClock();
+      // keyboard hints for accessibility
+      [btnFormat, btnTheme].forEach(b => {
+        b.addEventListener('keydown', e => {
+          if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); b.click(); }
+        });
+      });
+
+      // init
+      tick();
+      startTicker();
+    })();
   </script>
 </body>
 </html>
