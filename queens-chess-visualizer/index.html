@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-Queens Chess Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>N-Queens Chess Visualizer</h1>
+            <p>Visualize N-Queens chess positions from string notation</p>
+        </header>
+        
+        <div class="input-section">
+            <div class="form-group">
+                <label for="queens-input" class="form-label">Enter Queens String:</label>
+                <textarea 
+                    id="queens-input" 
+                    class="form-control" 
+                    rows="4" 
+                    placeholder='Example: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]'
+                ></textarea>
+            </div>
+            <button id="generate-btn" class="btn btn--primary">Generate Chessboards</button>
+            <div id="error-message" class="error-message hidden"></div>
+        </div>
+        
+        <div id="chessboards-container" class="chessboards-container">
+            <!-- Chessboards will be generated here -->
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
