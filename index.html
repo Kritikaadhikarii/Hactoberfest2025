@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Password Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Generate a <br><span>Random Password</span></h1>
+
+    <!-- Password Display -->
+    <div class="display">
+      <input type="text" id="password" placeholder="Your Secure Password" aria-label="Generated Password" readonly />
+      <img src="copy.png" alt="Copy password" id="copyIcon" title="Copy Password" />
+    </div>
+
+    <!-- Password Length Control -->
+    <div class="length-control">
+      <label for="length">Password Length:</label>
+      <input type="number" id="length" value="12" min="6" max="32" />
+    </div>
+
+    <!-- Generate Button -->
+    <button id="generateBtn">
+      <img src="thunder.png" alt="Generate Icon" />
+      Generate Password
+    </button>
+  </div>
+
+  <script src="logic.js"></script>
+</body>
+</html>
