@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Password Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Advanced Password Generator</h1>
+            <p>Generate secure, random passwords with customizable options</p>
+        </header>
+
+        <div class="generator-section">
+            <div class="options-panel">
+                <h3>Password Options</h3>
+                
+                <div class="option-group">
+                    <label for="length">Password Length: <span id="lengthValue">12</span></label>
+                    <input type="range" id="length" min="4" max="50" value="12" class="slider">
+                </div>
+
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="uppercase" checked>
+                        <span class="checkmark"></span>
+                        Uppercase Letters (A-Z)
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="lowercase" checked>
+                        <span class="checkmark"></span>
+                        Lowercase Letters (a-z)
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="numbers" checked>
+                        <span class="checkmark"></span>
+                        Numbers (0-9)
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="symbols" checked>
+                        <span class="checkmark"></span>
+                        Special Symbols (!@#$%^&*)
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="excludeSimilar">
+                        <span class="checkmark"></span>
+                        Exclude Similar Characters (0, O, l, I)
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="excludeAmbiguous">
+                        <span class="checkmark"></span>
+                        Exclude Ambiguous Characters ({ } [ ] ( ) \ / | ` ~)
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button id="generateBtn" class="btn btn-primary">Generate Password</button>
+                    <button id="copyBtn" class="btn btn-secondary" disabled>Copy to Clipboard</button>
+                </div>
+            </div>
+
+            <div class="result-panel">
+                <h3>Generated Password</h3>
+                <div class="password-display">
+                    <input type="text" id="passwordOutput" readonly placeholder="Click 'Generate Password' to create a new password">
+                    <button id="regenerateBtn" class="btn-icon" title="Regenerate">🔄</button>
+                </div>
+                
+                <div class="password-strength">
+                    <div class="strength-bar">
+                        <div id="strengthIndicator" class="strength-fill"></div>
+                    </div>
+                    <span id="strengthText">Password Strength</span>
+                </div>
+
+                <div class="password-info">
+                    <div class="info-item">
+                        <span class="info-label">Length:</span>
+                        <span id="passwordLength">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Entropy:</span>
+                        <span id="passwordEntropy">0</span> bits
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Time to Crack:</span>
+                        <span id="crackTime">Instant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="presets-section">
+            <h3>Quick Presets</h3>
+            <div class="preset-buttons">
+                <button class="preset-btn" data-preset="basic">Basic (8 chars)</button>
+                <button class="preset-btn" data-preset="strong">Strong (12 chars)</button>
+                <button class="preset-btn" data-preset="very-strong">Very Strong (16 chars)</button>
+                <button class="preset-btn" data-preset="maximum">Maximum (24 chars)</button>
+                <button class="preset-btn" data-preset="memorable">Memorable</button>
+                <button class="preset-btn" data-preset="pin">PIN (Numbers only)</button>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h3>Password History</h3>
+            <div id="passwordHistory" class="history-list">
+                <p class="no-history">No passwords generated yet</p>
+            </div>
+            <button id="clearHistoryBtn" class="btn btn-outline" disabled>Clear History</button>
+        </div>
+
+        <div class="tips-section">
+            <h3>💡 Password Security Tips</h3>
+            <ul>
+                <li>Use passwords with at least 12 characters for better security</li>
+                <li>Include a mix of uppercase, lowercase, numbers, and symbols</li>
+                <li>Never reuse passwords across different accounts</li>
+                <li>Consider using a password manager to store your passwords securely</li>
+                <li>Enable two-factor authentication when available</li>
+                <li>Change passwords regularly, especially for sensitive accounts</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
