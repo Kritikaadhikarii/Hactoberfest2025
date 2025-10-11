@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+
+  <body>
+    <header id="header">
+      <div id="logo">
+        <img
+          src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg"
+          alt="Chai Chaska"
+          id="header-img"
+        />
+        <p id="logo-name">Chai Chaska</p>
+      </div>
+      <nav id="nav-bar">
+        <ul id="nav-list" type="none">
+          <li class="list">
+            <a class="nav-link" href="#Home">Home</a>
+          </li>
+          <li class="list">
+            <a class="nav-link" href="#Order">Order</a>
+          </li>
+          <li class="list">
+            <a class="nav-link" href="#SignUp">SignUp</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Body statrs from here -->
+    <section id="section-1">
+      <div class="moto">
+        <h2>Where Every Sip Tells a Story</h2>
+        <h3 id="h3-year">~ Since 2021</h3>
+      </div>
+    </section>
+    <!-- Main body starts from here -->
+    <main id="Home">
+      <div id="video-div">
+        <iframe
+          id="video"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/ugHpSuIHvvQ?si=5rhDc8wohLsCdiyU"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <!-- Order contents -->
+      <section id="Order" id="Content-div">
+        <h3>Our Products</h3>
+        <div id="Items">
+          <div id="Inside-div">
+            <img
+              src="https://www.munatycooking.com/wp-content/uploads/2024/04/Three-glasses-filled-with-karak-chai-500x500.jpg"
+              alt="Tea Image"
+              id="order-image"
+            />
+            <ul id="tea-list Items-list">
+              <li>
+                <b>Masala Chai </b>- The classic spiced Indian tea :
+                <b>&#8377;10</b>
+              </li>
+              <li>
+                <b>Tulsi Ginger Tea </b>- Herbal blend with health in every sip
+                : <b>&#8377;15</b>
+              </li>
+              <li>
+                <b>Elaichi Chai </b>- Fragrant cardamom-infused goodness :
+                <b>&#8377;20</b>
+              </li>
+            </ul>
+          </div>
+          <div id="Inside-div">
+            <img
+              src="https://images.unsplash.com/photo-1678019940462-490ab4f9579a?q=80&w=2022&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Coffee Image"
+              id="order-image"
+            />
+            <ul id="coffee-list Items-list">
+              <li>
+                <b>Cold Brew Coffee </b>- Smooth, bold, and refreshing :
+                <b>&#8377;20</b>
+              </li>
+              <li>
+                <b>Cappuccino </b>- Rich espresso with frothy milk
+                <b>&#8377;50</b>
+              </li>
+              <li>
+                <b>Filter Kaapi </b>- South Indian style traditional filter
+                coffee <b>&#8377;80</b>
+              </li>
+            </ul>
+          </div>
+          <div id="Inside-div">
+            <img
+              src="https://images.unsplash.com/photo-1687783451933-ce93aa1687c9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="snacks"
+              id="order-image"
+            />
+            <ul id="snacks-list Items-list">
+              <li>
+                <b>Paneer Puff </b>- Crispy layers with a spiced paneer filling
+                : <b>&#8377;80</b>
+              </li>
+              <li>
+                <b>Veg Sandwich </b>- Fresh veggies & chutney in soft bread :
+                <b>&#8377;55</b>
+              </li>
+              <li>
+                <b>Samosa Plate </b>- Golden triangles with potato masala inside
+                : <b>&#8377;35</b>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Form for SignUp -->
+      <section id="SignUp">
+        <form id="form" action="https://www.freecodecamp.com/email-submit">
+          <h3>Sign Up Form</h3>
+          <label for="name">Name </label>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            id="name"
+            required
+            class="input"
+          />
+          <label for="email">Email </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter yor Email"
+            id="email"
+            class="input"
+            required
+          />
+          <label for="mobile">Mobile No.</label>
+          <input
+            type="number"
+            placeholder="Contact Number"
+            id="number"
+            class="input"
+            required
+          />
+          <label for="address">Address </label>
+          <input
+            type="text"
+            placeholder="Enter your Address"
+            id="address"
+            class="input"
+            required
+          />
+          
+          <input type="submit" value="SUBMIT" id="submit" />
+        </form>
+      </section>
+    </main>
+    <!-- Footer starts from here -->
+    <footer id="contact-info">
+        <h4>Contact info.</h4>
+        <div>
+          <h5>Yaman Raza</h5>
+        </div>
+        <div>
+          <h5>Mobile Number : 9334989859</h5>
+        </div>
+        <div>
+          <h5>Email Address : meyamu92349@gmail.com</h5>
+        </div>
+        <div>
+          <h5>Address : Hazaribagh, 825301, Jharkhand</h5>
+        </div>
+      <div id="credit">Made with &#9829; by Faizan</div>
+    </footer>
+  </body>
+</html>
