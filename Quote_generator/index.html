@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/10de8434fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Quote of the day</title>
+  </head>
+  <body>
+    <div class="quote-box">
+      <h2>Quote of the day</h2>
+      <blockquote>Loading....</blockquote>
+      <span>Loading....</span>
+      <div>
+        <button>New Quote</button>
+        <button id="button2"><i class="fa-brands fa-twitter"></i>Tweet</button>
+      </div>
+    </div>
+
+    <!-- <script src="project.js"></script> -->
+    <script>
+        fetch("https://api.quotable.io")
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          console.log(data);
+        });
+    </script>
+  </body>
+</html>
