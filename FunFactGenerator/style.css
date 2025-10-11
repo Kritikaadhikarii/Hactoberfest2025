@@ -1,0 +1,157 @@
+/* Body with a retro grid background */
+body {
+    background: radial-gradient(circle at center, #000000 60%, #111111);
+    color: #00FFAA;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Animated grid background */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        #0d0d0d 0px, 
+        #0d0d0d 1px, 
+        transparent 1px, 
+        transparent 50px
+    ),
+    repeating-linear-gradient(
+        90deg, 
+        #0d0d0d 0px, 
+        #0d0d0d 1px, 
+        transparent 1px, 
+        transparent 50px
+    );
+    transform: scale(1.5);
+    opacity: 0.1;
+    z-index: -2;
+    animation: gridAnimation 10s linear infinite;
+}
+
+/* Grid animation to create a subtle moving effect */
+@keyframes gridAnimation {
+    0% { transform: translateY(0) scale(1.5); }
+    100% { transform: translateY(-50px) scale(1.5); }
+}
+
+/* Neon-glowing header */
+h1 {
+    color: #00FFAA;
+    text-shadow: 0 0 5px #00FFAA;
+    margin-bottom: 20px;
+}
+
+/* Button with smooth hover effect */
+button {
+    background-color: transparent;
+    color: #00FFAA;
+    border: 2px solid #00FFAA;
+    padding: 15px 25px;
+    font-size: 1em;
+    border-radius: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px #00FFAA;
+    font-family: 'Press Start 2P';
+    margin-top: 40px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #00FFAA, 0 0 25px #00FFAA;
+}
+
+/* Display for fun fact */
+.fun-fact-display {
+    margin-top: 50px;
+    font-size: 1em;
+    background: rgba(0, 255, 170, 0.1);
+    border: 1px solid #00FFAA;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00FFAA;
+    animation: fadeIn 2s ease;
+    height: 50vh;
+    width: 800px;
+}
+
+.fun-fact-title {
+    font-size: 30px;
+    display: block;
+    text-decoration: underline;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.fun-fact-description {
+    font-size: 17px;
+    display: block;
+    margin-top: 20px;
+}
+
+/* Smooth fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Create a glowing grid effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        #111111 0px,
+        #111111 1px,
+        transparent 1px,
+        transparent 50px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        #111111 0px,
+        #111111 1px,
+        transparent 1px,
+        transparent 50px
+    );
+    z-index: -2;
+    opacity: 0.5;
+}
+
+/* Animated gradient for depth */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 255, 170, 0.2), transparent 60%);
+    z-index: -1;
+    animation: glowAnimation 6s infinite alternate;
+}
+
+/* Grid motion */
+@keyframes glowAnimation {
+    0% {
+        transform: scale(1.2);
+        filter: blur(5px);
+    }
+    100% {
+        transform: scale(1.3);
+        filter: blur(8px);
+    }
+}
