@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚖️ BMI Calculator</h1>
+            <p>Calculate your Body Mass Index and get health insights</p>
+        </header>
+
+        <div class="calculator-section">
+            <div class="input-panel">
+                <h3>Enter Your Details</h3>
+                
+                <div class="input-group">
+                    <label for="height">Height</label>
+                    <div class="input-row">
+                        <input type="number" id="height" placeholder="0" min="50" max="300" step="0.1">
+                        <select id="heightUnit">
+                            <option value="cm">cm</option>
+                            <option value="ft">ft</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="weight">Weight</label>
+                    <div class="input-row">
+                        <input type="number" id="weight" placeholder="0" min="20" max="500" step="0.1">
+                        <select id="weightUnit">
+                            <option value="kg">kg</option>
+                            <option value="lbs">lbs</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="age">Age (Optional)</label>
+                    <input type="number" id="age" placeholder="25" min="1" max="120" step="1">
+                </div>
+
+                <div class="input-group">
+                    <label for="gender">Gender (Optional)</label>
+                    <select id="gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <button id="calculateBtn" class="btn btn-primary">Calculate BMI</button>
+                <button id="resetBtn" class="btn btn-secondary">Reset</button>
+            </div>
+
+            <div class="result-panel">
+                <h3>Your BMI Results</h3>
+                
+                <div class="bmi-display">
+                    <div class="bmi-value">
+                        <span id="bmiValue">--</span>
+                        <span class="bmi-unit">kg/m²</span>
+                    </div>
+                    <div class="bmi-category" id="bmiCategory">
+                        <span id="categoryText">Enter your details</span>
+                    </div>
+                </div>
+
+                <div class="bmi-chart">
+                    <div class="chart-bar">
+                        <div class="chart-label">Underweight</div>
+                        <div class="chart-range underweight"></div>
+                        <div class="chart-value">&lt; 18.5</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">Normal</div>
+                        <div class="chart-range normal"></div>
+                        <div class="chart-value">18.5 - 24.9</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">Overweight</div>
+                        <div class="chart-range overweight"></div>
+                        <div class="chart-value">25.0 - 29.9</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">Obese</div>
+                        <div class="chart-range obese"></div>
+                        <div class="chart-value">≥ 30.0</div>
+                    </div>
+                </div>
+
+                <div class="bmi-indicator">
+                    <div class="indicator-track">
+                        <div id="bmiIndicator" class="indicator-dot"></div>
+                    </div>
+                </div>
+
+                <div class="health-insights" id="healthInsights">
+                    <h4>Health Insights</h4>
+                    <div id="insightsContent">
+                        <p>Enter your height and weight to get personalized health insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="what-is-bmi">
+                <h3>What is BMI?</h3>
+                <p>Body Mass Index (BMI) is a measure of body fat based on height and weight. It's calculated by dividing your weight in kilograms by the square of your height in meters.</p>
+                <div class="formula">
+                    <strong>BMI = Weight (kg) / Height (m)²</strong>
+                </div>
+            </div>
+
+            <div class="bmi-limitations">
+                <h3>BMI Limitations</h3>
+                <ul>
+                    <li>BMI doesn't distinguish between muscle and fat mass</li>
+                    <li>May not be accurate for athletes with high muscle mass</li>
+                    <li>Doesn't account for age, gender, or body composition</li>
+                    <li>May not be suitable for children, elderly, or pregnant women</li>
+                    <li>Doesn't consider bone density or overall health</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tips-section">
+            <h3>💡 Health Tips</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🥗</div>
+                    <h4>Healthy Eating</h4>
+                    <p>Focus on whole foods, fruits, vegetables, and lean proteins. Limit processed foods and added sugars.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🏃‍♂️</div>
+                    <h4>Regular Exercise</h4>
+                    <p>Aim for at least 150 minutes of moderate-intensity exercise per week, including strength training.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">💧</div>
+                    <h4>Stay Hydrated</h4>
+                    <p>Drink plenty of water throughout the day. Aim for 8-10 glasses daily.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">😴</div>
+                    <h4>Quality Sleep</h4>
+                    <p>Get 7-9 hours of quality sleep each night to support overall health and weight management.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h3>Calculation History</h3>
+            <div id="calculationHistory" class="history-list">
+                <p class="no-history">No calculations yet</p>
+            </div>
+            <button id="clearHistoryBtn" class="btn btn-outline" disabled>Clear History</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

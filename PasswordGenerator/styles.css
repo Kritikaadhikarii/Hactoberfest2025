@@ -1,0 +1,405 @@
+/* Advanced Password Generator Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.generator-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.options-panel, .result-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.options-panel h3, .result-panel h3 {
+    margin-bottom: 20px;
+    color: #4a5568;
+    font-size: 1.3rem;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #e2e8f0;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.checkbox-group {
+    margin-bottom: 25px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #48bb78;
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #38a169;
+    transform: translateY(-2px);
+}
+
+.btn-secondary:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #e2e8f0;
+    color: #4a5568;
+}
+
+.btn-outline:hover:not(:disabled) {
+    background: #f7fafc;
+    border-color: #cbd5e0;
+}
+
+.password-display {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #f7fafc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#passwordOutput {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    font-family: 'Courier New', monospace;
+    color: #2d3748;
+}
+
+.btn-icon {
+    padding: 15px;
+    background: #667eea;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+}
+
+.btn-icon:hover {
+    background: #5a67d8;
+}
+
+.password-strength {
+    margin-bottom: 20px;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.strength-weak { background: #f56565; width: 25%; }
+.strength-fair { background: #ed8936; width: 50%; }
+.strength-good { background: #ecc94b; width: 75%; }
+.strength-strong { background: #48bb78; width: 100%; }
+
+#strengthText {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.password-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.info-item {
+    text-align: center;
+    padding: 10px;
+    background: #f7fafc;
+    border-radius: 6px;
+}
+
+.info-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #718096;
+    margin-bottom: 4px;
+}
+
+.info-item span:last-child {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.presets-section, .history-section, .tips-section {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.presets-section h3, .history-section h3, .tips-section h3 {
+    margin-bottom: 20px;
+    color: #4a5568;
+    font-size: 1.3rem;
+}
+
+.preset-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.preset-btn {
+    padding: 10px 15px;
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.preset-btn:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+}
+
+.preset-btn.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f7fafc;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.history-item .password-text {
+    flex: 1;
+    margin-right: 10px;
+    word-break: break-all;
+}
+
+.history-item .copy-history-btn {
+    padding: 5px 10px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.no-history {
+    text-align: center;
+    color: #a0aec0;
+    font-style: italic;
+    padding: 20px;
+}
+
+.tips-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tips-section li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+    color: #4a5568;
+}
+
+.tips-section li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #48bb78;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .generator-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .preset-buttons {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}
+
+/* Animation for password generation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.generating {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Copy success animation */
+@keyframes copySuccess {
+    0% { background: #48bb78; }
+    100% { background: #38a169; }
+}
+
+.copy-success {
+    animation: copySuccess 0.3s ease-in-out;
+}
