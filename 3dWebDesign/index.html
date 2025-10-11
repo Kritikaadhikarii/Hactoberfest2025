@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Web Design by mefaizankhan</title>
+    <!-- Link for External CSS -->
+    <link rel="stylesheet" href="style/style.css" />
+    <!-- Link for 3D robot design -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Link for Google font used for EAGLE -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <img class="image-gradient" src="assets/background.png" alt="background Image" />
+    <div class="layer-blur"></div>
+    <!-- Container for the web page -->
+    <div class="container">
+      <header>
+        <h1 data-aos="fade-down" data-aos-duration="1500" class="logo">
+          EAGLE
+        </h1>
+        <nav>
+          <a data-aos="fade-down" data-aos-duration="1500" href="#">🏠Home</a>
+          <a data-aos="fade-down" data-aos-duration="2000" href="#">🎮Store</a>
+          <a data-aos="fade-down" data-aos-duration="2500" href="#">💎Deals</a>
+          <a data-aos="fade-down" data-aos-duration="3000" href="#"
+            >📩Contact</a
+          >
+          <button
+            data-aos="zoom-in"
+            data-aos-duration="2000"
+            class="btn-signin"
+          >
+            SignIn
+          </button>
+        </nav>
+      </header>
+      <!-- Hero area -->
+      <main>
+        <div class="content">
+          <div data-aos="fade-up" data-aos-duration="3000" class="tag-box">
+            <div class="tag">GAME READY &#9658;</div>
+          </div>
+          <h1 data-aos="zoom-out" data-aos-duration="1500">
+            Gaming Starts<br />Here...
+          </h1>
+          <p
+            data-aos="fade-left"
+            data-aos-anchor="#example-anchor"
+            data-aos-offset="500"
+            data-aos-duration="500"
+            class="description"
+          >
+            Your one-stop shop for rare, powerful, and fully verified accounts
+            that put you ahead from the very first match.
+          </p>
+          <div class="buttons">
+            <a
+              data-aos="flip-left"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000"
+              class="btn-get-started"
+              href="#"
+              >Documentation &gt;</a
+            >
+            <a
+              data-aos="flip-left"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000"
+              href="#"
+              class="btn-signin-main"
+              >Get-Started &gt;</a
+            >
+          </div>
+        </div>
+      </main>
+      <spline-viewer
+        data-aos="fade-left"
+        data-aos-anchor="#example-anchor"
+        data-aos-offset="500"
+        data-aos-duration="1500"
+        class="robot-3d"
+        url="https://prod.spline.design/5cnFejDGWENskM7p/scene.splinecode"
+      ></spline-viewer>
+    </div>
+    <script
+        type="module"
+        src="https://unpkg.com/@splinetool/viewer@1.10.46/build/spline-viewer.js"
+      ></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
