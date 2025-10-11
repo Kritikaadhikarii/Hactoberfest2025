@@ -1,0 +1,163 @@
+body {
+  background: linear-gradient(#e4d4c8, #d0b49f, #a47551, #523a28, #2f2015);
+  margin-top: 0;
+}
+
+#header {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  background: radial-gradient(#e4d4c8, #d0b49f, #a47551);
+  border-radius: 0 0 30% 30%;
+}
+
+#nav-bar {
+  display: flex;
+  width: 100vw;
+}
+#logo {
+  display: flex;
+  width: 50vw;
+}
+#logo-name {
+  font-size: 2.5rem;
+  margin: 5px 0 5px 5px;
+  font-family: Cursive;
+  color: #523a28;
+}
+
+#header-img {
+  height: 4rem;
+  width: 8rem;
+  border-radius: 0 0 10% 30%;
+}
+
+.list {
+  background: radial-gradient(#2f2015, #523a28, #a47551);
+  height: 2vw;
+  font-family: Impact, Haettenschweiler;
+  font-size: 1.2rem;
+  border-radius: 20%;
+}
+.nav-link {
+  text-decoration: none;
+  color: #e4d4c8;
+}
+#nav-list {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50vw;
+}
+#section-1 {
+  padding-top: calc(5rem + 1rem); /* Logo height + any margins */
+}
+.nav-link {
+  margin: 2rem;
+}
+.moto {
+  display: block;
+  text-align: center;
+}
+
+#video-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+#Items {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#Inside-div {
+  border: 2px solid #e4d4c8;
+  background-color: #2f2015;
+  box-shadow:1px 1px 8px 4px  #2f2015;
+}
+
+#Inside-div:hover {
+  background-color: #523a28;
+  box-shadow: 1px 1px 8px 4px #e4d4c8;
+  border-radius: 0 0 5% 5%;
+  transition-duration: 1s;
+}
+#order-image {
+  width: 30rem;
+  height: 25rem;
+}
+li {
+  color: #e4d4c8;
+  font-size: 1.03rem;
+}
+
+label {
+  margin-top: 5px;
+}
+
+.input {
+  padding: 0.5rem;
+  background-color: #e4d4c8;
+  font-size: medium;
+
+}
+
+input[type='submit'] {
+  width: 50%;
+  padding: 0.7rem;
+  margin: auto;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: #2f2015;
+  color: #e4d4c8;
+}
+#submit {
+  margin-top: 1.5rem;
+  border-radius: 10%;
+}
+#submit:hover {
+  background-color: #e4d4c8;
+  color: #2f2015;
+  border: 2px solid #a47551;
+  border-radius: 20%;
+  transition-duration: 1s;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  margin: auto;
+  font-family: cursive;
+  color: #d0b49f;
+}
+
+h3 {
+  color: #2f2015;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+h5,
+h4 {
+  color: #e4d4c8;
+  font-size: 1.3rem;
+  margin: 0.2rem;
+  text-align: start;
+}
+#contact-info {
+  background: radial-gradient(#d0b49f, #a47551, #523a28);
+  margin-top: 1.5rem;
+  border-radius: 2%;
+}
+#credit {
+  color: #d0b49f;
+  text-align: end;
+  margin-right: 1.5rem;
+}
+
+@media (min-width: 1060){
+  #header {
+    width: 100vw;
+  }
+}
