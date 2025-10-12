@@ -5,7 +5,6 @@ class Solution:
         cols = [[0] * (N + 1) for _ in range(N)]
         boxes = [[0] * (N + 1) for _ in range(N)]
         sudokuSolved = False
-
         def couldPlace(d, row, col):
             idx = (row // n) * n + col // n
             return rows[row][d] + cols[col][d] + boxes[idx][d] == 0
