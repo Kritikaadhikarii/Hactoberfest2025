@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="app-title">My Notes</h1>
+            <button id="add-note-btn" class="add-btn">
+                <span class="add-icon">+</span>
+                Add Note
+            </button>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search notes..." class="search-input">
+        </div>
+
+        <div id="notes-container" class="notes-grid">
+        </div>
+
+        <div id="empty-state" class="empty-state">
+            <div class="empty-icon">📝</div>
+            <h3>No notes yet</h3>
+            <p>Create your first note to get started</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
