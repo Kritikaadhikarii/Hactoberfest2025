@@ -1,6 +1,6 @@
 # HacktoberFest 2025 - Open Source Contributions 🎉
 
-Welcome to the **HacktoberFest 2025** repository! 🎃 This repo is dedicated to encouraging and helping developers of all levels to contribute to open-source projects. If you’re new to open source, this is a great opportunity to start. We’re glad to have you here!
+Welcome to the **HacktoberFest 2025** repository! 🎃 This repo is dedicated to encouraging and helping developers of different levels to contribute to open-source projects. If you’re new to open source, this is a great opportunity to start. We’re glad to have you here!
 
 
 ## About HacktoberFest
