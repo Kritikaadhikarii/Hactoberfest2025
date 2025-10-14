@@ -1,0 +1,75 @@
+# Typing Speed Test App
+
+**Tier:** 1-Beginner  
+
+Typing speed tests are a fun and interactive way to measure how fast and accurately you can type.  
+In this project, you'll build a simple **Typing Speed Test App** that displays a random passage for the user to type within a limited time.  
+Once the timer runs out (or the user finishes typing), the app calculates and displays their **typing speed (WPM)** and **accuracy (%).**
+
+This project will help you understand **real-time input handling**, **timing events**, and **DOM manipulation** — essential skills for building interactive web apps.  
+
+
+## Features
+
+- **Real-time Timer** – Start typing to begin the timer automatically.  
+- **Live Accuracy Check** – Incorrect letters are highlighted instantly.  
+- **Performance Stats** – Get detailed results including Words Per Minute (WPM) and Accuracy (%).  
+- **Restart Option** – Take the test again with a new random passage.  
+- **No External Libraries** – All calculations implemented manually.
+
+
+## User Stories
+
+- [ ] User can see a **random passage** to type on the screen.  
+- [ ] User can start the test by clicking a **Start** button (starts the timer).  
+- [ ] User can see a **typing input area** to type the given text.  
+- [ ] User can view a **countdown timer** showing how much time is left (e.g., 60 seconds).  
+- [ ] User can see their **WPM** and **Accuracy (%)** after finishing or when the timer ends.  
+- [ ] User can click **Restart** to take the test again with a new passage.  
+- [ ] User sees **real-time error highlighting** while typing.
+
+
+## Bonus Features
+
+- [ ] User can select different **time durations** (15s, 30s, 60s, 120s).  
+- [ ] User can choose **difficulty levels** or text lengths.  
+- [ ] User’s **best WPM** is saved locally using `localStorage`.  
+- [ ] **Dark/Light Mode** toggle for better UI experience.  
+- [ ] Live **WPM and Accuracy** tracking while typing.  
+- [ ] **Progress Graphs or History** showing previous scores.  
+
+
+## Constraints
+
+- Do not use any third-party libraries for typing speed or accuracy calculations.  
+- Use only front-end technologies like **HTML**, **CSS**, and **JavaScript** (or React if preferred).  
+
+
+## How to Calculate WPM
+
+**Words Per Minute (WPM)** = (Total Characters Typed / 5) ÷ (Time in Minutes)  
+**Accuracy (%)** = (Correct Characters / Total Characters Typed) × 100  
+
+
+## Example UI Inspirations
+
+- [Monkeytype](https://monkeytype.com)  
+- [10FastFingers](https://10fastfingers.com)  
+
+
+## Useful Resources
+
+- [Typing Test (Wikipedia)](https://en.wikipedia.org/wiki/Typing_test)  
+- [MDN: Keyboard Events](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent)  
+- [How to Calculate WPM](https://www.speedtypingonline.com/typing-equations)  
+
+
+## Example Projects
+
+- [Typing Speed Test – Monkeytype Clone](https://monkeytype.com)  
+- [Typing Speed Test (CodePen)](https://codepen.io/rajatkantinandi/pen/PoKyLMy)  
+- [Speed Typing Game – Web Dev Simplified](https://github.com/WebDevSimplified/Speed-Typing-Game)  
+- [Typing Game in React](https://github.com/karlhadwen/typing-game)  
+- [10FastFingers Clone – Vanilla JS](https://codepen.io/joshuaward/full/jObXJZj)  
+
+
