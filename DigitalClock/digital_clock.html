@@ -15,6 +15,7 @@
       color: #00ffcc; /* neon green text */
       font-family: monospace, Arial, sans-serif;
       font-size: 3rem;
+      transition: background 0.4s, color 0.4s;
     }
 
     /* Style the clock container */
@@ -23,15 +24,76 @@
       border: 2px solid #00ffcc;
       border-radius: 10px;
       box-shadow: 0 0 15px #00ffcc;
+      text-align: center;
     }
+    /* Date display */
+    #date {
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-top: 10px;
+    }
+    /* Buttons section */
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      background: transparent;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #00ffcc;
+      color: #111;
+    }
+
+     /* Light mode */
+    .light-mode {
+      background: #f2f2f2;
+      color: #111;
+    }
+
+    .light-mode #clock {
+      border-color: #111;
+      box-shadow: 0 0 15px #666;
+    }
+
+    .light-mode button {
+      border-color: #111;
+      color: #111;
+    }
+
+    .light-mode button:hover {
+      background: #111;
+      color: #f2f2f2;
+    }
+
   </style>
 </head>
 <body>
    <!-- The clock will appear inside this div -->
   <div id="clock"></div>
+  <div id="date"></div>
 
+    <!-- Control buttons -->
+    <div class="controls">
+      <button onclick="toggleMode()">🌗 Mode</button>
+      <button onclick="toggleFormat()">🕒 Format</button>
+      <button onclick="changeTheme()">🎨 Theme</button>
+    </div>
 
   <script>
+    let is24Hour = false;
+    const themes = ['#00ffcc', '#ff4081', '#00bfff', '#ffcc00', '#7fff00'];
+    let currentTheme = 0;
+
     // Function to update the clock every second
     function updateClock() {
       const now = new Date(); // get current date and time
@@ -41,22 +103,45 @@
       let minutes = now.getMinutes();
       let seconds = now.getSeconds();
 
-      // Determine AM or PM
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-
-      // Convert 24-hour format to 12-hour format
-      hours = hours % 12 || 12; // if hours = 0, set to 12
-
+      // Format for 12-hour or 24-hour mode
+      let ampm = '';
+      if (!is24Hour) {
+        ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+      }
       // Add leading zeros to minutes and seconds if needed
       minutes = minutes < 10 ? '0' + minutes : minutes;
       seconds = seconds < 10 ? '0' + seconds : seconds;
 
-      // Format the time string
-      const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
-
-      // Display the time in the clock div
-      document.getElementById('clock').textContent = timeString;
+      // Display time and date
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+      document.getElementById('date').textContent = now.toDateString();
     }
+    // Toggle between 12-hour and 24-hour format
+    function toggleFormat() {
+      is24Hour = !is24Hour;
+      updateClock();
+    }
+
+    // Toggle between dark and light mode
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+
+    // Change theme color
+    function changeTheme() {
+      currentTheme = (currentTheme + 1) % themes.length;
+      const newColor = themes[currentTheme];
+
+      document.body.style.color = newColor;
+      document.getElementById('clock').style.borderColor = newColor;
+      document.getElementById('clock').style.boxShadow = `0 0 15px ${newColor}`;
+      document.querySelectorAll('button').forEach(btn => {
+        btn.style.borderColor = newColor;
+        btn.style.color = newColor;
+      });
+    }
+
 
     // Call updateClock every 1000 milliseconds (1 second)
     setInterval(updateClock, 1000);
