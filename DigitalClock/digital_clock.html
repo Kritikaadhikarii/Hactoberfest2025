@@ -16,11 +16,13 @@
       font-family: monospace, Arial, sans-serif;
       font-size: 3rem;
       transition: background 0.4s, color 0.4s;
+      position: relative;
+      flex-direction: column;
     }
 
     /* Style the clock container */
     #clock {
-      padding: 20px;
+      padding: 20px 40px;
       border: 2px solid #00ffcc;
       border-radius: 10px;
       box-shadow: 0 0 15px #00ffcc;
@@ -31,11 +33,16 @@
       font-size: 1.2rem;
       color: #aaa;
       margin-top: 10px;
+      text-align: center;
     }
     /* Buttons section */
     .controls {
-      margin-top: 20px;
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
+      flex-direction: column;
       gap: 10px;
     }
     button {
@@ -47,6 +54,7 @@
       cursor: pointer;
       font-size: 1rem;
       transition: all 0.3s ease;
+      width: 120px;
     }
 
     button:hover {
