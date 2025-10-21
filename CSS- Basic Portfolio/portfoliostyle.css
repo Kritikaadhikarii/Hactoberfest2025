@@ -1,0 +1,103 @@
+header{
+    background-color:rgb(56, 56, 56);
+    color: white;
+    text-align:center;
+    font-size:2em;
+}
+
+.navbar ul{
+    list-style-type: none;
+    background-color:rgb(79, 78, 78);
+    overflow:hidden;
+    padding:15px;
+}
+.navbar a{
+    color:white;
+    text-decoration: none;
+    padding:25px;
+}
+.navbar li:hover{
+    background-color:rgb(110, 110, 110);
+}
+.navbar li{
+    float:left;
+}
+
+#heading{
+    background-color:rgba(128, 128, 128, 0.17);
+    padding:10px;
+    text-align:center;
+}
+
+.project #project1{
+    background-color:rgb(144, 180, 245);
+    display:inline-block;
+    font-size:1em;
+    color:rgb(0, 0, 0);
+    padding:10px;
+    width:200px;
+}
+
+.project #project2{
+    background-color:rgb(144, 180, 245);
+    display:inline-block;
+    font-size:1em;
+    color:rgb(0, 0, 0);
+    padding:10px;
+    margin:20px;
+    width:200px;
+}
+
+.project #project3{
+    background-color:rgb(144, 180, 245);
+    display:inline-block;
+    font-size: 1em;
+    color:rgb(0, 0, 0);
+    padding:10px;
+    width:200px;
+}
+
+#project1:hover{
+    background-color: rgb(100, 146, 233) ;
+}
+
+#project2:hover{
+    background-color: rgb(100, 146, 233) ;
+}
+
+#project3:hover{
+    background-color: rgb(100, 146, 233) ;
+}
+
+.blog #blog1{
+    background-color:rgb(251, 192, 242);
+    display:inline-block;
+    font-size:1 em;
+    color:rgb(0, 0, 0);
+    padding:10px;
+    width:300px;
+    margin-right:20px;
+}
+
+.blog #blog2{
+    background-color:rgb(251, 192, 242);
+    display:inline-block;
+    font-size:1 em;
+    color:rgb(0, 0, 0);
+    padding:10px;
+    width:300px;
+}
+
+#blog1:hover{
+    background-color:rgb(241, 147, 228)
+}
+
+#blog2:hover{
+    background-color:rgb(241, 147, 228)
+}
+
+footer{
+    background-color:rgb(62, 62, 62);
+    text-align:center;
+    color:white;
+}
