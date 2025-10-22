@@ -1,35 +1,30 @@
 function validatePassword() {
-    var password = document.getElementById('password').value;
-    var message = document.getElementById('message');
+  const password = document.getElementById("password").value;
+  const message = document.getElementById("message");
+  const errors = [];
 
-    var lowerCase = /[a-z]/.test(password);
-    var upperCase = /[A-Z]/.test(password);
-    var numeric = /[0-9]/.test(password);
-    var specialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    var minLength = password.length >= 8;
+  if (password.length < 8) {
+    errors.push("Password must be at least 8 characters long.");
+  }
+  if (!/[A-Z]/.test(password)) {
+    errors.push("Password must contain at least one uppercase letter.");
+  }
+  if (!/[a-z]/.test(password)) {
+    errors.push("Password must contain at least one lowercase letter.");
+  }
+  if (!/[0-9]/.test(password)) {
+    errors.push("Password must contain at least one number.");
+  }
+  if (!/[!@#$%^&*(),.?\":{}|<>]/.test(password)) {
+    errors.push("Password must contain at least one special character.");
+  }
 
-      // Update checklist dynamically
-   document.getElementById("lower").innerHTML = lowerCase ? "✅" : "❌";
-    document.getElementById("upper").innerHTML = upperCase ? "✅" : "❌";
-    document.getElementById("number").innerHTML = numeric ? "✅" : "❌";
-    document.getElementById("special").innerHTML = specialChar ? "✅" : "❌";
-    document.getElementById("length").innerHTML = minLength ? "✅" : "❌";
-
-
-    // Add color classes
-    document.getElementById("lower").className = lowerCase ? "valid" : "invalid";
-    document.getElementById("upper").className = upperCase ? "valid" : "invalid";
-    document.getElementById("number").className = numeric ? "valid" : "invalid";
-    document.getElementById("special").className = specialChar ? "valid" : "invalid";
-    document.getElementById("length").className = minLength ? "valid" : "invalid";
-
-    // Final status message
-    var message = document.getElementById('message');
-    if (lowerCase && upperCase && numeric && specialChar && minLength) {
-        message.style.color = 'lightgreen';
-        message.innerHTML = 'Strong password!';
-    } else {
-        message.style.color = '#ffeb3b';
-        message.innerHTML = '⚠️ Keep typing to meet all requirements.';
-    }
+  if (errors.length > 0) {
+    message.style.color = "red";
+    message.innerHTML = errors.join("<br>");
+  } else {
+    message.style.color = "green";
+    message.innerHTML = "Password is valid!";
+  }
 }
+
