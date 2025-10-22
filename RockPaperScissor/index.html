@@ -7,23 +7,24 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="game-container">
+  <main class="game-container">
     <h1>Rock Paper Scissors ✊✋✌️</h1>
 
     <div class="choices">
-      <button class="choice" id="rock">✊ Rock</button>
-      <button class="choice" id="paper">✋ Paper</button>
-      <button class="choice" id="scissors">✌️ Scissors</button>
+      <button class="choice" id="rock" aria-label="Choose Rock">✊ Rock</button>
+      <button class="choice" id="paper" aria-label="Choose Paper">✋ Paper</button>
+      <button class="choice" id="scissors" aria-label="Choose Scissors">✌️ Scissors</button>
     </div>
 
-    <div class="result">
-      <p id="user-choice">You chose: -</p>
-      <p id="computer-choice">Computer chose: -</p>
-      <h2 id="winner">Result: -</h2>
-    </div>
-
-    <button id="reset-btn">🔄 Play Again</button>
-  </div>
+    <section class="result-section">
+      <div class="result">
+        <p id="user-choice">You chose: -</p>
+        <p id="computer-choice">Computer chose: -</p>
+        <h2 id="winner">Result: -</h2>
+      </div>
+      <button id="reset-btn">🔄 Play Again</button>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
