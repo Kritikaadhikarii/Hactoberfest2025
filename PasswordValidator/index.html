@@ -4,25 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Validator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Password Validator</h2>
-        <input type="password" id="password" placeholder="Enter your password">
-        <button onclick="validatePassword()">Validate</button>
-        <div id="message"></div>    
-   
+    <main class="container">
+        <header class="header">
+            <h1>Password Validator</h1>
+            <p>Create a strong and secure password</p>
+        </header>
 
-    <div id="requirements">
-    <p><span id="lower" class="invalid"></span> At least one lowercase letter</p>
-    <p><span id="upper" class="invalid"></span> At least one uppercase letter</p>
-    <p><span id="number" class="invalid"></span> At least one number</p>
-    <p><span id="special" class="invalid"></span> At least one special character (!@#$...)</p>
-    <p><span id="length" class="invalid"></span> Minimum length of 8 characters</p>
-</div>
-<div id="message"></div>
- </div>
+        <form id="passwordForm">
+            <div class="input-group">
+                <label for="password">Enter Your Password</label>
+                <div class="password-input-wrapper">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="password-input" 
+                        placeholder="Type your password here..."
+                        autocomplete="new-password"
+                    >
+                    <button type="button" class="toggle-password" id="togglePassword">
+                    </button>
+                </div>
+            </div>
+
+            <div class="strength-meter">
+                <div class="strength-bar">
+                    <div class="strength-fill" id="strengthFill"></div>
+                </div>
+                <div class="strength-text" id="strengthText">Enter a password to check its strength</div>
+            </div>
+
+            <div class="requirements">
+                <h3>Password Requirements</h3>
+                <div class="requirement not-met" id="lengthReq">
+                    <span class="requirement-icon"></span>
+                    At least 8 characters long
+                </div>
+                <div class="requirement not-met" id="uppercaseReq">
+                    <span class="requirement-icon"></span>
+                    Contains uppercase letter (A-Z)
+                </div>
+                <div class="requirement not-met" id="lowercaseReq">
+                    <span class="requirement-icon"></span>
+                    Contains lowercase letter (a-z)
+                </div>
+                <div class="requirement not-met" id="numberReq">
+                    <span class="requirement-icon"></span>
+                    Contains at least one number (0-9)
+                </div>
+                <div class="requirement not-met" id="specialReq">
+                    <span class="requirement-icon"></span>
+                    Contains special character (!@#$%^&*)
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Create Password
+            </button>
+
+            <div class="success-message" id="successMessage">
+               Excellent! Your password is strong and secure.
+            </div>
+        </form>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
