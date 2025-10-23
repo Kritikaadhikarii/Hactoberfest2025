@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  text-align: center;
+  background: linear-gradient(to bottom, #87ceeb, white);
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 62px;
+  /* font-weight: 700; */
+  margin-bottom: 50px;
+}
+
+.board {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  border: 4px solid #333;
+  gap: 0;
+  border-radius: 12px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cell {
+  font-size: 124px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.cell:hover {
+  background-color: #f0f0f0;
+}
+
+.cell:not(:nth-child(3n)) {
+  border-right: 3px solid #333;
+}
+
+.cell:nth-child(-n + 6):not(:nth-child(n + 7)) {
+  border-bottom: 3px solid #333;
+}
+
+#status {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#resetBtn {
+  padding: 15px 30px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  border: 2px solid white;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+#resetBtn:hover {
+  background-color: #555;
+}
