@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Sky Star Map Generator 🌌</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Night Sky Star Map Generator</h1>
+    <p>Enter your city and date to see what your night sky looked like!</p>
+
+    <form id="skyForm">
+      <div class="form-group">
+        <label for="city">Enter City:</label><br>
+        <input 
+          type="text" 
+          id="city" 
+          name="city" 
+          placeholder="e.g. Mumbai, Tokyo, New York" 
+          title="Type the name of your city"
+          required 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="date">Select Date:</label><br>
+        <input 
+          type="date" 
+          id="date" 
+          name="date"
+          title="Choose the date you want to see the night sky for"
+          required 
+        />
+      </div>
+
+      <button type="submit">Generate Sky </button>
+    </form>
+
+    <div id="output">
+      <canvas id="skyCanvas"></canvas>
+      <p id="resultText"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
