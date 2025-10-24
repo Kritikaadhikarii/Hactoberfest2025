@@ -54,6 +54,81 @@ body {
   width: 16px;
 }
 
+.quick-access {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.quick-access h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.quick-access h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.favorites, .recent-searches {
+  margin-bottom: 15px;
+}
+
+.favorites-list, .recent-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-city {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.quick-city:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.weather-header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.favorite-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.favorite-btn.favorited {
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.2);
+}
+
 .weather-icon {
   width: 170px;
   margin-top: 30px;

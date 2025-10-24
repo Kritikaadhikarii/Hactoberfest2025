@@ -13,10 +13,30 @@
       <button><img src="images/search.png" alt="Search"></button>
     </div>
 
+    <!-- Quick Access Section -->
+    <div class="quick-access">
+      <h3>Quick Access</h3>
+      <div class="favorites">
+        <h4>Favorites ⭐</h4>
+        <div class="favorites-list" id="favoritesList">
+          <!-- Favorite cities will be populated here -->
+        </div>
+      </div>
+      <div class="recent-searches">
+        <h4>Recent Searches 🕒</h4>
+        <div class="recent-list" id="recentList">
+          <!-- Recent searches will be populated here -->
+        </div>
+      </div>
+    </div>
+
      <div class="error">Invalid city name</div>
 
     <div class="weather">
-      <img src="images/rain.png" class="weather-icon" alt="Weather Icon">
+      <div class="weather-header">
+        <img src="images/rain.png" class="weather-icon" alt="Weather Icon">
+        <button class="favorite-btn" id="favoriteBtn" title="Add to favorites">⭐</button>
+      </div>
       <h1 class="temp">22°C</h1>
       <h2 class="city">Bangalore</h2>
       <div class="details">
