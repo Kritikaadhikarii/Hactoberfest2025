@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Bubblegum Sans', cursive;
+    overflow: hidden;
+    position: relative;
+}
+
+.floating-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-symbol {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.6;
+    animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.game-title {
+    color: #fff;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 20px 0;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 3px solid #fff;
+    position: relative;
+    animation: containerGlow 2s infinite alternate;
+}
+
+@keyframes containerGlow {
+    from { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+    to { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.card {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    animation: matched 0.6s ease-out;
+}
+
+@keyframes matched {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    transition: all 0.3s;
+}
+
+.card-front {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+    color: white;
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-back {
+    background: linear-gradient(45deg, #a8edea, #fed6e3);
+    border: 3px solid #fff;
+}
+
+#score-panel {
+    margin: 20px;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    font-size: 24px;
+    color: #ff758c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
