@@ -8,10 +8,14 @@ A beginner-friendly weather application built using **HTML**, **CSS**, and **Jav
 ## 🚀 Features
 
 - 🔍 Search weather by city name  
+- ⭐ Favorite cities with quick access
+- 🕒 Recent searches history (last 5 searches)
+- 💾 Local storage persistence for favorites and history
+- ⌨️ Enter key support for quick search
 - 🌡️ Display temperature in Celsius  
 - 💧 Show humidity and wind speed  
-- 🌤️ Dynamic weather icons based on conditions  
-- ⚠️ Error message for invalid city names  
+- 🌤️ Dynamic weather icons based on conditions (Clear, Clouds, Rain, Drizzle, Mist, Snow)
+- ⚠️ User-friendly error messages  
 
 ---
 
