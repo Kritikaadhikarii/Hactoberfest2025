@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Password Generator</h2>
+
+    <div class="output">
+      <input type="text" id="password" readonly />
+      <button onclick="Password()"><i class="fa-solid fa-copy"></i></button>
+    </div>
+
+    <label>Password Length:
+      <input type="number" id="length" min="4" max="30" value="12" />
+    </label>
+
+    <div class="options">
+      <label><input type="checkbox" id="uppercase" checked /> Uppercase</label>
+      <label><input type="checkbox" id="lowercase" checked /> Lowercase</label>
+      <label><input type="checkbox" id="numbers" checked /> Numbers</label>
+      <label><input type="checkbox" id="symbols" checked /> Symbols</label>
+    </div>
+
+    <button onclick="generatePassword()">Generate Password</button>
+  </div>
+  <script src="https://kit.fontawesome.com/5d948a45ab.js" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>
