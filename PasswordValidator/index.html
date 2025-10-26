@@ -3,26 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Validator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Password Validator - Hacktoberfest 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #00bfff;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #009acd;
+        }
+
+        #requirements p {
+            text-align: left;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .invalid {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h2>Password Validator</h2>
         <input type="password" id="password" placeholder="Enter your password">
         <button onclick="validatePassword()">Validate</button>
-        <div id="message"></div>    
-   
+        
+        <div id="requirements">
+            <p><span id="lower" class="invalid">❌</span> At least one lowercase letter</p>
+            <p><span id="upper" class="invalid">❌</span> At least one uppercase letter</p>
+            <p><span id="number" class="invalid">❌</span> At least one number</p>
+            <p><span id="special" class="invalid">❌</span> At least one special character (!@#$...)</p>
+            <p><span id="length" class="invalid">❌</span> Minimum length of 8 characters</p>
+        </div>
 
-    <div id="requirements">
-    <p><span id="lower" class="invalid"></span> At least one lowercase letter</p>
-    <p><span id="upper" class="invalid"></span> At least one uppercase letter</p>
-    <p><span id="number" class="invalid"></span> At least one number</p>
-    <p><span id="special" class="invalid"></span> At least one special character (!@#$...)</p>
-    <p><span id="length" class="invalid"></span> Minimum length of 8 characters</p>
-</div>
-<div id="message"></div>
- </div>
-    <script src="script.js"></script>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const lower = document.getElementById('lower');
+            const upper = document.getElementById('upper');
+            const number = document.getElementById('number');
+            const special = document.getElementById('special');
+            const length = document.getElementById('length');
+            const message = document.getElementById('message');
+
+            // Regex checks
+            const lowerCheck = /[a-z]/.test(password);
+            const upperCheck = /[A-Z]/.test(password);
+            const numberCheck = /\d/.test(password);
+            const specialCheck = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const lengthCheck = password.length >= 8;
+
+            // Update requirement indicators
+            lower.className = lowerCheck ? 'valid' : 'invalid';
+            lower.textContent = lowerCheck ? '✅' : '❌';
+
+            upper.className = upperCheck ? 'valid' : 'invalid';
+            upper.textContent = upperCheck ? '✅' : '❌';
+
+            number.className = numberCheck ? 'valid' : 'invalid';
+            number.textContent = numberCheck ? '✅' : '❌';
+
+            special.className = specialCheck ? 'valid' : 'invalid';
+            special.textContent = specialCheck ? '✅' : '❌';
+
+            length.className = lengthCheck ? 'valid' : 'invalid';
+            length.textContent = lengthCheck ? '✅' : '❌';
+
+            // Display overall message
+            if(lowerCheck && upperCheck && numberCheck && specialCheck && lengthCheck) {
+                message.style.color = 'green';
+                message.textContent = "✅ Password is strong!";
+            } else {
+                message.style.color = 'red';
+                message.textContent = "❌ Password does not meet all requirements.";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -6,6 +6,7 @@ body {
     height: 100vh;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); 
 }
+
 /* Glassy square container with gradient */
 .container {
     text-align: center;
@@ -88,7 +89,6 @@ button:hover {
     color: #fff;
     font-weight: bold;
 }
-
 
 #requirements {
     text-align: left;
