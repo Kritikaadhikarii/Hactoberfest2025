@@ -1,35 +1,32 @@
+document.getElementById('password').addEventListener('input', validatePassword);
+document.getElementById('validateBtn').addEventListener('click', validatePassword);
+
 function validatePassword() {
-    var password = document.getElementById('password').value;
-    var message = document.getElementById('message');
+  const password = document.getElementById('password').value;
+  const message = document.getElementById('message');
 
-    var lowerCase = /[a-z]/.test(password);
-    var upperCase = /[A-Z]/.test(password);
-    var numeric = /[0-9]/.test(password);
-    var specialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    var minLength = password.length >= 8;
+  const checks = {
+    lower: /[a-z]/.test(password),
+    upper: /[A-Z]/.test(password),
+    number: /[0-9]/.test(password),
+    special: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    length: password.length >= 8
+  };
 
-      // Update checklist dynamically
-   document.getElementById("lower").innerHTML = lowerCase ? "✅" : "❌";
-    document.getElementById("upper").innerHTML = upperCase ? "✅" : "❌";
-    document.getElementById("number").innerHTML = numeric ? "✅" : "❌";
-    document.getElementById("special").innerHTML = specialChar ? "✅" : "❌";
-    document.getElementById("length").innerHTML = minLength ? "✅" : "❌";
+  for (const [key, passed] of Object.entries(checks)) {
+    const element = document.getElementById(key);
+    element.textContent = passed ? "✅" : "❌";
+    element.className = passed ? "valid" : "invalid";
+  }
 
-
-    // Add color classes
-    document.getElementById("lower").className = lowerCase ? "valid" : "invalid";
-    document.getElementById("upper").className = upperCase ? "valid" : "invalid";
-    document.getElementById("number").className = numeric ? "valid" : "invalid";
-    document.getElementById("special").className = specialChar ? "valid" : "invalid";
-    document.getElementById("length").className = minLength ? "valid" : "invalid";
-
-    // Final status message
-    var message = document.getElementById('message');
-    if (lowerCase && upperCase && numeric && specialChar && minLength) {
-        message.style.color = 'lightgreen';
-        message.innerHTML = 'Strong password!';
-    } else {
-        message.style.color = '#ffeb3b';
-        message.innerHTML = '⚠️ Keep typing to meet all requirements.';
-    }
+  if (Object.values(checks).every(Boolean)) {
+    message.style.color = "lightgreen";
+    message.textContent = "✅ Strong password!";
+  } else if (password.length === 0) {
+    message.style.color = "#ff4d4d";
+    message.textContent = "Please enter a password.";
+  } else {
+    message.style.color = "#ffeb3b";
+    message.textContent = "⚠️ Keep typing to meet all requirements.";
+  }
 }
