@@ -9,7 +9,6 @@
 <body>
   <main class="container">
     <h1>Password Validator</h1>
-
     <form id="passwordForm" novalidate>
       <label for="password">Enter your password:</label>
       <input 
@@ -18,13 +17,10 @@
         name="password"
         placeholder="Enter your password" 
         aria-describedby="requirements message"
-        required
-      >
+        required>
       <button type="button" id="validateBtn">Validate</button>
     </form>
-
     <div id="message" role="alert" aria-live="polite"></div>
-
     <section id="requirements" aria-label="Password requirements">
       <p><span id="lower" class="invalid">✖</span> At least one lowercase letter</p>
       <p><span id="upper" class="invalid">✖</span> At least one uppercase letter</p>
@@ -33,7 +29,6 @@
       <p><span id="length" class="invalid">✖</span> Minimum length of 8 characters</p>
     </section>
   </main>
-
   <script src="script.js"></script>
 </body>
 </html>
