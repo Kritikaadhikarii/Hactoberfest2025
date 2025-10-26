@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Validator</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Validator</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Password Validator</h2>
-        <input type="password" id="password" placeholder="Enter your password">
-        <button onclick="validatePassword()">Validate</button>
-        <div id="message"></div>    
-   
+  <div class="container">
+    <h2>Password Validator</h2>
 
+    <label for="password">Enter your password:</label>
+    <input type="password" id="password" placeholder="Enter your password" aria-describedby="requirements">
+    <button id="validateBtn">Validate</button>
+
+    <!-- Feedback message -->
+    <div id="message" role="alert" aria-live="polite"></div>
+
+    <!-- Requirements list -->
     <div id="requirements">
-    <p><span id="lower" class="invalid"></span> At least one lowercase letter</p>
-    <p><span id="upper" class="invalid"></span> At least one uppercase letter</p>
-    <p><span id="number" class="invalid"></span> At least one number</p>
-    <p><span id="special" class="invalid"></span> At least one special character (!@#$...)</p>
-    <p><span id="length" class="invalid"></span> Minimum length of 8 characters</p>
-</div>
-<div id="message"></div>
- </div>
-    <script src="script.js"></script>
+      <p><span id="lower" class="invalid">✖</span> At least one lowercase letter</p>
+      <p><span id="upper" class="invalid">✖</span> At least one uppercase letter</p>
+      <p><span id="number" class="invalid">✖</span> At least one number</p>
+      <p><span id="special" class="invalid">✖</span> At least one special character (!@#$...)</p>
+      <p><span id="length" class="invalid">✖</span> Minimum length of 8 characters</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
