@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple Web Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="calculator">
+      <h1>Simple Calculator</h1>
+      <div class="display-wrap">
+        <input id="display" class="display" type="text" readonly aria-label="Calculator display">
+      </div>
+
+      <div class="keys">
+        <!-- row 1 -->
+        <button data-key="7">7</button>
+        <button data-key="8">8</button>
+        <button data-key="9">9</button>
+        <button data-op="/">÷</button>
+
+        <!-- row 2 -->
+        <button data-key="4">4</button>
+        <button data-key="5">5</button>
+        <button data-key="6">6</button>
+        <button data-op="*">×</button>
+
+        <!-- row 3 -->
+        <button data-key="1">1</button>
+        <button data-key="2">2</button>
+        <button data-key="3">3</button>
+        <button data-op="-">−</button>
+
+        <!-- row 4 -->
+        <button data-key="0">0</button>
+        <button data-key=".">.</button>
+        <button data-op="%">%</button>
+        <button data-op="+">+</button>
+
+        <!-- row 5 actions -->
+        <button id="clear" class="wide">C</button>
+        <button id="equals" class="wide">=</button>
+        <button id="sqr">Sqr</button>
+        <button id="cube">Cube</button>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
