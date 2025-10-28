@@ -1,0 +1,176 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #0f1220;
+  --panel: #171a2b;
+  --text: #e9ecf1;
+  --muted: #a7b0c0;
+  --primary: #6c8cff;
+  --accent: #18d1b5;
+  --danger: #ff6b6b;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  /* Animated layered gradient background */
+  --g1: radial-gradient(800px 400px at 20% 10%, rgba(108,140,255,0.18), transparent 60%);
+  --g2: radial-gradient(600px 600px at 80% 30%, rgba(24,209,181,0.18), transparent 60%);
+  --g3: radial-gradient(700px 500px at 40% 90%, rgba(255,107,107,0.15), transparent 60%);
+  background: var(--bg);
+  background-image: var(--g1), var(--g2), var(--g3);
+  background-repeat: no-repeat;
+  animation: float-bg 16s ease-in-out infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+@keyframes float-bg {
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px; }
+  50% { background-position: 20px -30px, -30px 20px, 15px 25px; }
+  100% { background-position: -30px 20px, 25px -15px, -20px -25px; }
+}
+
+.app {
+  width: min(980px, 100%);
+  display: grid;
+  gap: 16px;
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.stats { display: flex; gap: 16px; }
+.stat { text-align: center; }
+.stat span { font-weight: 600; font-size: 18px; display: block; }
+.stat label { color: var(--muted); font-size: 12px; }
+
+.app__main {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 16px;
+}
+
+.stage {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.gallows { width: 100%; height: auto; }
+.gallows line, .gallows circle { stroke: #cfd6e6; stroke-width: 6; fill: none; stroke-linecap: round; }
+.gallows .base, .gallows .pole, .gallows .beam, .gallows .rope { stroke: #8092b7; stroke-width: 8; }
+.gallows .part {
+  transition: opacity .25s ease, stroke-dashoffset .6s ease;
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  opacity: 0;
+}
+.part.revealed { stroke-dashoffset: 0; opacity: 1; }
+.hidden { opacity: 0; stroke-dashoffset: 140; }
+
+.word-panel {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 20px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.category { color: var(--muted); font-size: 14px; }
+.word { font-size: 32px; letter-spacing: 6px; font-weight: 600; min-height: 40px; }
+.message { min-height: 24px; color: var(--accent); font-weight: 600; }
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.key {
+  background: #242a44;
+  color: var(--text);
+  border: 1px solid #313a60;
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .05s ease, background .2s ease, opacity .2s ease;
+}
+.key:hover {
+  background: #2b3256;
+  box-shadow: 0 6px 18px rgba(108,140,255,0.25), 0 0 0 1px rgba(108,140,255,0.35) inset;
+}
+.key:active { transform: translateY(1px); }
+.key.used { opacity: 0.45; pointer-events: none; }
+.key.correct { background: rgba(24, 209, 181, 0.18); border-color: var(--accent); box-shadow: 0 0 0 1px rgba(24,209,181,0.5) inset; }
+.key.wrong { background: rgba(255, 107, 107, 0.18); border-color: var(--danger); box-shadow: 0 0 0 1px rgba(255,107,107,0.5) inset; }
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  background: #242a44;
+  color: var(--text);
+  border: 1px solid #313a60;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background .2s ease, transform .05s ease;
+}
+.btn:hover { background: #2b3256; box-shadow: 0 8px 24px rgba(108,140,255,0.22); }
+.btn:active { transform: translateY(1px); }
+.btn.primary { border-color: var(--primary); background: rgba(108, 140, 255, 0.15); }
+
+/* Win/Lose message animations */
+.message {
+  min-height: 24px;
+  color: var(--accent);
+  font-weight: 600;
+}
+.message.win { color: var(--accent); animation: pop-in .5s ease; }
+.message.lose { color: var(--danger); animation: shake .4s ease; }
+
+@keyframes pop-in {
+  0% { transform: scale(.9); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-3px); }
+}
+
+@media (max-width: 900px) {
+  .app__main { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .keyboard { grid-template-columns: repeat(7, 1fr); }
+  .word { font-size: 26px; letter-spacing: 4px; }
+}
+

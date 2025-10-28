@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hangman</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <h1>Hangman</h1>
+      <div class="stats">
+        <div class="stat"><span id="wins">0</span><label>Wins</label></div>
+        <div class="stat"><span id="losses">0</span><label>Losses</label></div>
+      </div>
+    </header>
+
+    <main class="app__main">
+      <section class="stage">
+        <svg class="gallows" viewBox="0 0 200 220">
+          <line x1="10" y1="210" x2="190" y2="210" class="base" />
+          <line x1="40" y1="210" x2="40" y2="20" class="pole" />
+          <line x1="37" y1="20" x2="120" y2="20" class="beam" />
+          <line x1="120" y1="20" x2="120" y2="45" class="rope" />
+          <circle cx="120" cy="65" r="20" class="part head hidden" />
+          <line x1="120" y1="85" x2="120" y2="135" class="part body hidden" />
+          <line x1="120" y1="100" x2="95" y2="120" class="part arm-left hidden" />
+          <line x1="120" y1="100" x2="145" y2="120" class="part arm-right hidden" />
+          <line x1="120" y1="135" x2="98" y2="170" class="part leg-left hidden" />
+          <line x1="120" y1="135" x2="142" y2="170" class="part leg-right hidden" />
+        </svg>
+      </section>
+
+      <section class="word-panel">
+        <div id="category" class="category">Category: —</div>
+        <div id="word" class="word"></div>
+        <div id="message" class="message"></div>
+      </section>
+    </main>
+
+    <section class="keyboard" id="keyboard"></section>
+
+    <footer class="controls">
+      <button id="newGameBtn" class="btn primary">New Game</button>
+      <button id="hintBtn" class="btn">Hint</button>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
