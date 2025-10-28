@@ -5,6 +5,7 @@ const scoreEl = document.getElementById("score");
 const startBtn = document.getElementById("start-btn");
 const difficultySelect = document.getElementById("difficulty");
 const wordsPerMinuteEl = document.getElementById("wpm");
+const highScoreEl = document.getElementById("highscore");
 
 const animeWords = [
   "Naruto", "Sasuke", "Sakura", "Itachi", "Goku",
@@ -20,9 +21,13 @@ let timerInterval;
 let gameActive = false;
 let totalTime = 30;
 
-if (!wordDisplay || !wordInput || !timeEl || !scoreEl || !startBtn) {
+if (!wordDisplay || !wordInput || !timeEl || !scoreEl || !startBtn || !highScoreEl) {
   console.error("Essential DOM elements not found!");
 }
+
+// Load high score from localStorage
+let highScore = parseInt(localStorage.getItem('typingGameHighScore')) || 0;
+highScoreEl.textContent = highScore;
 
 function getRandomWord() {
   return animeWords[Math.floor(Math.random() * animeWords.length)];
@@ -107,8 +112,18 @@ function endGame() {
   if (wordsPerMinuteEl) {
     wordsPerMinuteEl.textContent = wpm;
   }
+
+  // Update high score if current score is higher
+  if (score > highScore) {
+    highScore = score;
+    localStorage.setItem('typingGameHighScore', highScore);
+    if (highScoreEl) {
+      highScoreEl.textContent = highScore;
+      highScoreEl.style.animation = "pulse 0.5s 3";
+    }
+  }
   
-  console.log(`Game ended! Score: ${score}, WPM: ${wpm}`);
+  console.log(`Game ended! Score: ${score}, WPM: ${wpm}, High Score: ${highScore}`);
 }
 
 if (wordInput) {
