@@ -1,0 +1,138 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --card-border: #2a2a2a;
+  --text-color: #e0e0e0;
+  --accent-color: #007bff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.game-container {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+h1 {
+  color: var(--accent-color);
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.stats {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  perspective: 1000px; /* For the 3D flip */
+}
+
+.card {
+  background-color: transparent;
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* This class is added by React when a card is flipped */
+.card.is-flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border: 2px solid var(--card-border);
+}
+
+.card-front {
+  background: linear-gradient(
+    135deg,
+    var(--card-bg) 0%,
+    var(--card-border) 100%
+  );
+  color: var(--accent-color);
+}
+
+.card-back {
+  background-color: var(--card-bg);
+  transform: rotateY(180deg);
+}
+
+.card.is-matched .card-back {
+  /* Show a subtle "matched" state */
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.restart-button {
+  margin-top: 25px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.restart-button:hover {
+  background-color: #0056b3;
+}
+
+.game-over-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.game-over-content {
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid var(--accent-color);
+}
