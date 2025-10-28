@@ -63,11 +63,14 @@ function startGame() {
   totalTime = time;
   gameActive = true;
   
-  if (wordInput) wordInput.disabled = false;
+  if (wordInput) {
+    wordInput.disabled = false;
+    wordInput.value = "";
+    wordInput.focus();
+    wordInput.classList.remove('correct', 'incorrect');
+  }
   if (startBtn) startBtn.disabled = true;
   if (difficultySelect) difficultySelect.disabled = true;
-  if (wordInput) wordInput.value = "";
-  if (wordInput) wordInput.focus();
   if (scoreEl) scoreEl.textContent = score;
   if (timeEl) timeEl.textContent = time;
   if (wordsPerMinuteEl) wordsPerMinuteEl.textContent = "0";
@@ -130,15 +133,29 @@ if (wordInput) {
   wordInput.addEventListener("input", () => {
     if (!gameActive) return;
     
-    if (wordInput.value.trim().toLowerCase() === currentWord.toLowerCase()) {
-      score++;
-      if (scoreEl) scoreEl.textContent = score;
-      showWord();
-      wordInput.value = "";
+    const currentInput = wordInput.value.trim().toLowerCase();
+    const targetWord = currentWord.toLowerCase();
+    
+    // Check if the current input matches the word so far
+    if (targetWord.startsWith(currentInput)) {
+      wordInput.classList.remove('incorrect');
+      wordInput.classList.add('correct');
       
-      const elapsedTime = totalTime - time;
-      const wpm = elapsedTime > 0 ? Math.round((score / elapsedTime) * 60) : 0;
-      if (wordsPerMinuteEl) wordsPerMinuteEl.textContent = wpm;
+      // If the word is complete
+      if (currentInput === targetWord) {
+        score++;
+        if (scoreEl) scoreEl.textContent = score;
+        showWord();
+        wordInput.value = "";
+        wordInput.classList.remove('correct');
+        
+        const elapsedTime = totalTime - time;
+        const wpm = elapsedTime > 0 ? Math.round((score / elapsedTime) * 60) : 0;
+        if (wordsPerMinuteEl) wordsPerMinuteEl.textContent = wpm;
+      }
+    } else {
+      wordInput.classList.remove('correct');
+      wordInput.classList.add('incorrect');
     }
   });
   
