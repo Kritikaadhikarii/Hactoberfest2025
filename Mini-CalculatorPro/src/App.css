@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Baloo 2', sans-serif;
+  background-color: rgb(32, 32, 32);
+}
+html, body {
+  height: 100%;
+  width: 100%;
+}
+.container{
+    box-sizing: border-box;
+    padding: 40px;
+    margin: 40px 40px;
+}
+.innercontainer{
+  border: 10px solid rgb(76, 76, 76);
+  padding: 32px;
+  border-radius: 32px;
+  box-shadow: 0px 0px 8px 20px rgb(0, 0, 0);
+  transition: all 0.5s ease-in-out;
+}
+.button{
+    text-align: center;
+    width: 66px;
+    padding: 8px;
+    margin: 6px 6px;
+    border: 2px solid black;
+    border-radius: 9px;
+    cursor: pointer;
+    background-color: silver;
+    font-size: 29px;
+}
+
+.row{
+  margin: 8px 0;
+}
+
+.row input{
+    width: 315px;
+    font-size: 20px;
+    margin: 0;
+    padding: 10px 12px;
+    border: px solid rgb(0, 140, 255);
+    border-radius: 5px;
+    background-color: silver;
+    color: black;
+}
+.button, .input{
+    box-shadow: 4px 4px 3px 3px black;
+    font-weight: 600;
+}
+.button:hover{
+  background-color: rgb(155, 155, 155);
+}
+.button:active{
+  background-color: rgb(155, 155, 155);
+  box-shadow: inset 3px 3px 8px black;
+}
+.delete{
+  color: red;
+  font-weight: 900;
+  box-sizing: border-box;
+  border: 3px solid red;
+}
+.operation{
+  color: blue;
+  font-weight: 900;
+  box-sizing: border-box;
+  border: 3px solid blue;
+}
+
+.nums{
+  color: rgb(0, 0, 0);
+  font-weight: 900;
+  box-sizing: border-box;
+  border: 3px solid black;
+}
+
+.text-center{
+  text-align: center;
+  color: aqua;
+  font-size: 4em;
+  margin: 50px 40px 30px 40px;
+  box-shadow: inset 0px 0px 10px 10px black;
+}
+
+.mx-auto{
+  margin: auto;
+}
+
+.flex{
+  display:flex;
+} 
+.flex-col{
+  flex-direction: column;
+}
+
+.items-center{
+  align-items: center;
+}
