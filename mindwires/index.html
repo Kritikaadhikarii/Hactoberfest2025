@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mind Wires Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>💡 Mind Wires 💡</h1>
+  <p>Turn all bulbs ON using the right switch combo!</p>
+  <div class="bulbs">
+    <div class="bulb" id="b0"></div>
+    <div class="bulb" id="b1"></div>
+    <div class="bulb" id="b2"></div>
+  </div>
+  <div class="switches">
+    <button onclick="toggle(0)">Switch 1</button>
+    <button onclick="toggle(1)">Switch 2</button>
+    <button onclick="toggle(2)">Switch 3</button>
+  </div>
+  <p id="msg"></p>
+  <button onclick="resetGame()">Reset Game</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
