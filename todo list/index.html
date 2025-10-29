@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <div class="body_container">
+        <div id="todo_container">
+            <div class="todo_input animate__animated animate__fadeInDown">
+                <p>TO-DO list</p> 
+                <input type="text" name="todo" id="todo" placeholder="Enter your task here ..." maxlength="30">
+                <button id="add_btn" onclick="add()"><i class="fa-solid fa-plus"></i> Add</button>
+                <header class="animate__animated animate__zoomIn">
+                TODO List using HTML, CSS & Javascript.
+                </header>
+            </div>
+            <div class="todo_list_container">
+                <ul id="todo_list">
+                </ul>
+            </div>
+        </div>
+        <!-- <footer>
+            Design by Mohtashim Javed
+        </footer> -->
+    </div>
+    <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/a7577e03bc.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
