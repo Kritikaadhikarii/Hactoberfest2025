@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Netflix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1 class="netflix-logo">NETFLIX</h1>
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">Series</a>
+                <a href="#" class="nav-link">Films</a>
+                <a href="#" class="nav-link">Watchlist</a>
+            </div>
+            <div class="nav-user">
+                <input type="text" id="searchInput" class="search-box" placeholder="Search movies...">
+                <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner" id="heroBanner">
+        <div class="hero-content">
+            <h2 id="heroTitle">Movie Title</h2>
+            <p id="heroDescription">Movie description goes here</p>
+            <div class="hero-buttons">
+                <button class="btn btn-play" id="playBtn">▶ Play</button>
+                <button class="btn btn-info">ℹ More Info</button>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Content Rows -->
+    <div class="content-container">
+        <div class="content-row">
+            <h3 class="row-title">Trending Now</h3>
+            <div class="movies-scroll" id="trendingRow">
+                <!-- Movies will be added here by JavaScript -->
+            </div>
+        </div>
+
+        <div class="content-row">
+            <h3 class="row-title">Top Rated</h3>
+            <div class="movies-scroll" id="topRatedRow">
+                <!-- Movies will be added here by JavaScript -->
+            </div>
+        </div>
+
+        <div class="content-row">
+            <h3 class="row-title">Action Movies</h3>
+            <div class="movies-scroll" id="actionRow">
+                <!-- Movies will be added here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Movie Modal -->
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Movie">
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <p class="modal-rating">Rating: <span id="modalRating"></span>/10</p>
+                    <button class="btn btn-play" id="modalPlayBtn">▶ Watch Now</button>
+                    <button class="btn btn-bookmark" id="bookmarkBtn">+ Watchlist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-player" id="videoPlayer">
+        <video id="videoElement" controls></video>
+        <button class="close-player" id="closePlayer">✕</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
