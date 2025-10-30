@@ -1,82 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #f0f2f5;
-  color: #333;
-  padding: 20px;
-}
-
-.container {
-  max-width: 500px;
-  margin: 0 auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 15px;
-  color: #2c3e50;
-}
-
-#note-input {
-  width: 100%;
-  height: 80px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  resize: none;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-#add-btn {
-  background: #3498db;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-#add-btn:hover {
-  background: #2980b9;
-}
-
-#notes-list {
-  list-style: none;
-  margin-top: 20px;
-}
-
-#notes-list li {
-  background: #f9f9f9;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  word-break: break-word;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5rem 2rem;
+  min-height: 100vh;
+  transition: background 0.5s ease;
 }
 
-#notes-list li button {
-  background: #e74c3c;
+/*  Add Note Button */
+.add {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: #4caf50;
   color: white;
   border: none;
-  padding: 5px 8px;
-  border-radius: 3px;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  font-size: 12px;
+  transition: 0.3s ease;
+  z-index: 10;
 }
 
-#notes-list li button:hover {
-  background: #c0392b;
+.add:hover {
+  transform: scale(1.05);
+}
+
+/*Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  background-color: #ffffffcc;
+  color: #333;
+  border: none;
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* ========== Note Card ========== */
+.note {
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  border-radius: 15px;
+  width: 340px;
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.note:hover {
+  transform: translateY(-5px);
+}
+
+.note .tools {
+  background-color: #4caf50;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.6rem;
+}
+
+.note .tools button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-left: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.note .tools button:hover {
+  color: #c8f7c5;
+}
+
+.note textarea {
+  flex: 1;
+  font-family: inherit;
+  font-size: 1.05rem;
+  border: none;
+  resize: none;
+  padding: 1.2rem;
+  outline: none;
+  background-color: #f9f9f9;
+  color: #333;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.main {
+  flex: 1;
+  padding: 1.2rem;
+  overflow-y: auto;
+  background-color: #fdfdfd;
+  color: #333;
+  font-size: 1rem;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.note textarea::-webkit-scrollbar,
+.note .main::-webkit-scrollbar {
+  width: 6px;
+}
+
+.note textarea::-webkit-scrollbar-thumb,
+.note .main::-webkit-scrollbar-thumb {
+  background-color: #b0bec5;
+  border-radius: 3px;
+}
+
+/*Pink Theme*/
+.pink-theme body {
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+}
+
+.pink-theme .note .tools {
+  background-color: #ff8fab;
+}
+
+.pink-theme .add {
+  background-color: #ff5d8f;
+}
+
+.pink-theme .add:hover {
+  background-color: #ff4081;
+}
+
+/*Blue Theme */
+.blue-theme body {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.blue-theme .note .tools {
+  background-color: #3949ab;
+}
+
+.blue-theme .add {
+  background-color: #1e88e5;
+}
+
+.blue-theme .add:hover {
+  background-color: #1565c0;
+}
+
+
+@media (max-width: 768px) {
+  .add, .theme-toggle {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .note {
+    width: 90%;
+    height: 380px;
+  }
 }

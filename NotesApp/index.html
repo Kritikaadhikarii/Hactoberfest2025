@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mini Notes</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Mini Notes</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recora</title>
 
-    <textarea id="note-input" placeholder="Type your note..."></textarea>
-    <button id="add-btn">Add Note</button>
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
 
-    <ul id="notes-list"></ul>
-  </div>
+    
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <script src="script.js"></script>
-</body>
+  <body>
+   
+    <button class="add" id="add"><i class="fas fa-plus"></i> Add Note</button>
+
+
+    <button class="theme-toggle" id="themeToggle">🎨 Switch Theme</button>
+
+  
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.2.7/marked.min.js"
+      integrity="sha512-Sl04EWeJ0QgILm83WoubQbZqh71aWLJP8xnswnKSBI37S+ZtrWVtSHmd1YaYYdC1g9PWN1siY7KO2jU3HtCVHA=="
+      crossorigin="anonymous"
+    ></script>
+
+
+    <script src="script.js"></script>
+  </body>
 </html>
