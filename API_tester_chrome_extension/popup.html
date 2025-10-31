@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>API Tester</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>API Request Tester</h2>
+      <form id="apiForm">
+        <div class="input-group">
+          <label for="url">API URL</label>
+          <input
+            type="text"
+            id="url"
+            placeholder="https://api.example.com"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="method">HTTP Method</label>
+          <select id="method">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="headers">Headers (JSON)</label>
+          <textarea
+            id="headers"
+            placeholder='{"Content-Type": "application/json"}'
+          ></textarea>
+        </div>
+        <div class="input-group">
+          <label for="body">Body (JSON)</label>
+          <textarea id="body" placeholder='{"key": "value"}'></textarea>
+        </div>
+        <button type="submit">Send Request</button>
+      </form>
+      <div id="response">
+        <h3>Response</h3>
+        <pre id="responseOutput">Waiting for request...</pre>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
