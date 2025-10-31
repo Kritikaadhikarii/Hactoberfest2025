@@ -1,0 +1,15 @@
+import random
+
+quotes = [
+    "Keep going. Everything you need will come to you at the right time.",
+    "Start where you are. Use what you have. Do what you can.",
+    "Dream big, work hard, stay humble.",
+    "Success is not for the lazy.",
+    "Every day is a second chance."
+]
+
+def inspire():
+    print("\n", random.choice(quotes), "\n")
+
+if __name__ == "__main__":
+    inspire()
