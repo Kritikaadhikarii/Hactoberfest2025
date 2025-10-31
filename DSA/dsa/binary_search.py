@@ -1,5 +1,4 @@
-def binary_search_iterative(arr: list, target: int) -> int:
-    """
+"""
     Perform binary search iteratively to find the target element in a sorted array.
     
     Args:
@@ -11,7 +10,8 @@ def binary_search_iterative(arr: list, target: int) -> int:
         
     Time Complexity: O(log n) where n is the length of the array
     Space Complexity: O(1) as we only use a constant amount of extra space
-    """
+"""
+def binary_search_iterative(arr: list, target: int) -> int:
     left, right = 0, len(arr) - 1
     
     while left <= right:
@@ -30,8 +30,9 @@ def binary_search_iterative(arr: list, target: int) -> int:
     # Target not found
     return -1
 
-def binary_search_recursive(arr: list, target: int, left: int = None, right: int = None) -> int:
-    """
+
+
+"""
     Perform binary search recursively to find the target element in a sorted array.
     
     Args:
@@ -45,7 +46,8 @@ def binary_search_recursive(arr: list, target: int, left: int = None, right: int
         
     Time Complexity: O(log n) where n is the length of the array
     Space Complexity: O(log n) due to recursive call stack
-    """
+"""
+def binary_search_recursive(arr: list, target: int, left: int = None, right: int = None) -> int:
     # Initialize left and right for first call
     if left is None:
         left = 0
